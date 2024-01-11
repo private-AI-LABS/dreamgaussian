@@ -1,15 +1,15 @@
 ### Input
 # input rgba image path (default to None, can be load in GUI too)
-input: 
+input:
 # input text prompt (default to None, can be input in GUI too)
 prompt:
 negative_prompt:
 # input mesh for stage 2 (auto-search from stage 1 output path if None)
 mesh:
-# estimated elevation angle for input image 
+# estimated elevation angle for input image
 elevation: 0
 # reference image resolution
-ref_size: 256
+ref_size: 1024
 # density thresh for mesh extraction
 density_thresh: 1
 
@@ -24,20 +24,20 @@ mvdream: False
 # use imagedream
 imagedream: False
 # use stable-zero123 instead of zero123-xl
-stable_zero123: False 
+stable_zero123: True 
 # guidance loss weights (0 to disable)
 lambda_sd: 0
 lambda_zero123: 1
 # warmup rgb supervision for image-to-3d
-warmup_rgb_loss: True
+warmup_rgb_loss: False
 # training batch size per iter
 batch_size: 1
 # training iterations for stage 1
-iters: 500
+iters: 600
 # whether to linearly anneal timestep
 anneal_timestep: True
 # training iterations for stage 2
-iters_refine: 50
+iters_refine: 60
 # training camera radius
 radius: 2
 # training camera fovy
@@ -52,7 +52,6 @@ load:
 train_geo: False
 # prob to invert background color during training (0 = always black, 1 = always white)
 invert_bg_prob: 0.5
-
 
 ### GUI
 gui: False

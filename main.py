@@ -10,6 +10,8 @@ import torch.nn.functional as F
 
 import rembg
 
+import sys
+
 from cam_utils import orbit_camera, OrbitCamera
 from gs_renderer import Renderer, MiniCam
 
@@ -889,7 +891,7 @@ class GUI:
     def train(self, iters=500):
         if iters > 0:
             self.prepare_train()
-            for i in tqdm.trange(iters):
+            for i in tqdm.trange(iters, file=sys.stdout):
                 self.train_step()
             # do a last prune
             self.renderer.gaussians.prune(min_opacity=0.01, extent=1, max_screen_size=1)
