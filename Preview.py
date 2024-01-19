@@ -3,6 +3,7 @@
 from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
+import common_method
 import uvicorn
 
 app = FastAPI()
@@ -17,7 +18,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-app.mount("/data", StaticFiles(directory="data"), name="data")
-app.mount("/result", StaticFiles(directory="result"), name="result")
+# json-server 정보 세팅
+common_method.load_config()
+# setting 정보 세팅
+common_method.get_setting_json_server()
 
-uvicorn.run(app, host="0.0.0.0", port=5000)
+app.mount("/data", StaticFiles(directory="data"), name="data")
+
+uvicorn.run(app, host="0.0.0.0", port=common_method.SETTING["port"])
