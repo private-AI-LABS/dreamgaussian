@@ -13,9 +13,9 @@ def get_setting_json_server():
     try:
         json_server_ip = CONFIG["jsonServerIp"]
         json_server_port = CONFIG["jsonServerPort"]
-        channel_id = CONFIG["channelId"]
+        channel_number = CONFIG["channelNumber"]
 
-        response = requests.get(f"http://{json_server_ip}:{json_server_port}/{channel_id}")
+        response = requests.get(f"http://{json_server_ip}:{json_server_port}/{channel_number}")
         response.raise_for_status()  # HTTP 오류가 발생하면 예외 발생
 
         data = response.json()
